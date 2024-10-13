@@ -36,6 +36,39 @@ Inspired by **Generative Agents**, introduced by Stanford’s **Park, Joon Sung,
 - **Additional Features**:
   - Built a pipeline to fetch and store more data in the vector database using **Pinecone**.
 
+
+## How to Run
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/agentic-rag-a-thon.git
+cd agentic-rag-a-thon
+```
+
+### 2. Install Dependencies
+Make sure you have Python 3.9 or higher. Install dependencies from the `requirements.txt` file:
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Set Up Environment Variables
+Create a `.env` file in the root directory of the project and add your API keys and other required environment variables:
+
+```bash
+OPENAI_API_KEY=your_openai_api_key
+MONGO_URI=your_mongodb_uri
+PINECONE_API_KEY=your_pinecone_api_key
+TAVILY_API_KEY=your_tavini_api_key
+CSV_FILE="data/guest_profiles_dataset.csv"
+```
+
+### 4. Run the App
+Start the application using:
+```bash
+python app.py
+```
+
+Once the app is running, you can access the Gradio interface through the local link provided in the terminal or by accessing the remote link if you're sharing the app.
+
 ## Challenges We Faced
 Implementing a simplified generative agent memory system proved to be more challenging than expected. This resulted in conversations between agents lacking the level of detail we hoped for. To overcome this temporarily, we injected targeted prompts and discussion topics to ensure we could still generate useful insights. Future iterations and access to more detailed data will improve the system.
 
