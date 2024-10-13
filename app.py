@@ -92,11 +92,17 @@ def simulate_chat(linkedin_1, linkedin_2, category, chat_history):
     for i in range(5):  # Simulate a 50-round conversation
         response_1=agent_openai.stream_graph_updates(response_2)
         chat_history.append((response_1, None)) 
-        yield chat_history
+        yield chat_history, ""
         response_2=agent_mistral.stream_graph_updates(response_1)
         chat_history.append((None, response_2))     
 
-        yield chat_history
+        yield chat_history, ""
+
+        if i==4:
+            print("Chat simulation completed!")
+            response=find_insights(chat_history)
+            chat_history.append((str(response), None)) 
+            yield chat_history, response
         
 
 # Create Gradio interface
@@ -166,20 +172,16 @@ with gr.Blocks(css=".title {color: white; text-align: center; background-color: 
                                 img_2, name_2, desc_2, match_2, intro_2, linkedin_2, agent_profile_2,
                                 img_3, name_3, desc_3, match_3, intro_3, linkedin_3, agent_profile_3])
     
-    
-    # Define the interface for printing the text string
-    textbox_output = gr.Textbox(label="Conversation Insights")
+    # Define the action when the button is clicked
+    final_insights_textbox = gr.Textbox(label="Final Insights", placeholder="Insights will be displayed here after the chat.")
 
     # Here we have to add the text inputs to the simulate_chat function
     simulate_btn.click(fn=simulate_chat,
         inputs=[linkedin_profile, linkedin_1, category_dropdown], 
-        outputs=chatbox)
+        outputs=[chatbox, final_insights_textbox])
     
 
-    
-    
 
-    
 
 # Launch the app
 demo.launch(share=True)

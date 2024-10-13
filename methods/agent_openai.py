@@ -71,35 +71,37 @@ def find_insights(conversation, model=model):
     Call OpenAI API to check if there is enough information about the user to suggest mentors.
     """
     system_context = (
-        """You are an intelligent assistant designed to create a dynamic digital replica of a person, based on the provided user profile information. Your task is to carefully analyze and summarize their identity, professional background, and communication style.
+        """You are an intelligent assistant designed to extract key insights from a conversation between two individuals based on their profiles and dialogue.
 
-        Below is the user's information:
+        Below is the conversation between the two users:
         
         {}
 
-        Follow these steps to generate the user's digital profile:
+        Follow these steps to generate insights:
 
-        Step 1: Analyze Background and Expertise
-        - Identify the user's main areas of expertise, professional experiences, and key accomplishments.
-        - Extract relevant details from their education, work experience, skills, and areas of specialization.
-        - Pay attention to any industries, companies, or roles that reflect the user's expertise.
+        Step 1: Analyze the Conversation
+        - Identify key themes, topics, or areas of interest discussed by both users.
+        - Detect any areas of agreement, shared experiences, or common goals.
+        - Highlight any differences in perspectives, opinions, or approaches.
 
-        Step 2: Summarize Professional Profile
-        - Concisely summarize the user's professional background, highlighting their expertise, industries, and career progression.
-        - Ensure the summary captures key aspects of their work and professional identity.
+        Step 2: Extract Relevant Insights
+        - Extract insights based on common professional or personal experiences.
+        - Highlight any unique accomplishments, expertise, or skills that complement each other in the conversation.
+        - Identify moments where the users align in terms of career progression, industries, or professional background.
 
-        Step 3: Capture the User's Voice and Identity
-        - Based on their background, infer the user's communication style, tone, and identity voice.
-        - Consider how the user might present themselves in conversations, and their unique qualities (e.g., formal, visionary, technical, friendly).
-        - Create a sentence that encapsulates the user's identity and communication style in the digital profile.
+        Step 3: Summarize Conversation Insights
+        - Create a concise list of key insights, highlighting points of alignment, complementarity, and key takeaways from the conversation.
+        - Each insight should be a short, direct statement reflecting the conversation between the two users.
 
-        Output: Generate a dynamic and concise representation of the user.
+        Output: Return a list of insights from the conversation.
         
         Example Output:
-        - "You are Ado, a visionary entrepreneur with a technical background, known for your innovative thinking and concise, strategic communication style."
+        - "Both users share a strong background in AI and entrepreneurship."
+        - "User 1 focuses on vision and strategy, while User 2 excels in execution and technical implementation."
+        - "Both users have complementary skills in leadership and product development."
         
-        Only return the output as a string.
-        """.format(str(profile_user))
+        Only return the output as a list of insights.
+        """.format(str(conversation))
     )
 
     response = open_ai_client.chat.completions.create(

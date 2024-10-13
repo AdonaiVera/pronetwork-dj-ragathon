@@ -17,7 +17,6 @@ _ = load_dotenv(find_dotenv())
 
 OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
 PINECONE_API_KEY = os.environ['PINECONE_API_KEY']
-MISTRAL_API_KEY = os.environ['MISTRAL_API_KEY']  # Assuming Mistral has an API key
 mongo_uri = os.environ['MONGO_URI'] 
 collection_type="user_experience_rag"
 mongo_handler = MongoDBHandler(mongo_uri, OPENAI_API_KEY)
