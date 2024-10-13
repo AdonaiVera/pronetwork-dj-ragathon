@@ -101,7 +101,6 @@ def simulate_chat(linkedin_1, linkedin_2, category, chat_history):
         if i==4:
             print("Chat simulation completed!")
             response=find_insights(chat_history)
-            chat_history.append((str(response), None)) 
             yield chat_history, response
         
 

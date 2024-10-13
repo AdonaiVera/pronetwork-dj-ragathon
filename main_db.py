@@ -70,7 +70,9 @@ if not os.path.exists(csv_file):
     initialize_csv(csv_file)
 
 # Scrape guests from the event
-event_url="https://lu.ma/7zypq83u?tk=HyUE9u"
+event_url="https://lu.ma/qiim4tlo?tk=RN3vuQ"
+#"https://lu.ma/x5j5bt51?tk=FwOPn7"
+#"https://lu.ma/7zypq83u?tk=HyUE9u"
 #"https://lu.ma/nho5h281?tk=22x0KR"
 #"https://lu.ma/ur1c0cje?tk=wSXw36"
 #"https://lu.ma/qiim4tlo?tk=RN3vuQ"

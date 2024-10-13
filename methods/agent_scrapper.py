@@ -12,7 +12,9 @@ import os
 
 _ = load_dotenv(find_dotenv()) 
 
-KEY_LINKEDIN = os.environ['KEY_LINKEDIN'] 
+KEY_LINKEDIN = os.environ['KEY_LINKEDIN']
+
+KEY_LINKEDIN_PROFILE= os.environ['KEY_LINKEDIN']
 
 def scrape_guests_from_event(url):
     # Initialize Safari WebDriver (you can use any driver)
@@ -25,7 +27,7 @@ def scrape_guests_from_event(url):
     cookies = [
         {
             'name': 'luma.auth-session-key', 
-            'value': 'usr-lcBzok0fq9fJIhw.l1puu8224i9jjflvvhmk', 
+            'value': KEY_LINKEDIN_PROFILE, 
             'domain': '.lu.ma',
             'path': '/',
         },
