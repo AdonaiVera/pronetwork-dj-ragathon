@@ -1,0 +1,13 @@
+# Folder
+venv/
+env/
+data/
+.gradio/
+
+
+# Files
+.DS_Store
+
+# Configuration file
+.env
+lib/
